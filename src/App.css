@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+/*@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+
+/* To create a scrolling animation while moving from one section to another */
+html {
+    scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Related to nav bar */
+.navbar-margin {
+    margin-bottom: 35px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.custom-navbar {
+    background-color: #011627 !important;
+    
+}
+
+
+.brand-logo {   /* Also included in signin */
+    padding-left: 10px !important;
+    letter-spacing: 2px;
+}
+
+input, button{
+    font-family: "Quicksand";
+    height: 45px !important;
+    width: 100% !important;
+}
+
+.input-field input:focus + label {
+    color: #039be5 !important;
   }
+
+  /* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid #039be5 !important;
+    box-shadow: 0 1px 0 0 #9bd2ee !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* 
+.change-card-shadow div div.card{
+    box-shadow:0 0 10px 0px rgba(0,0,0,.1);
+} */
+
+.card, .tabs, .browser-default, .btn-floating, .btn{
+    box-shadow:0 0 10px 0px rgba(0,0,0,.1);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card:hover{
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 21%);
 }
