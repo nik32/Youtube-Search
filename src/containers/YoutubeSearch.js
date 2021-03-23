@@ -103,6 +103,7 @@ function YoutubeSearch() {
             </div>
 
             {/* No need for row as the CardList returns a list "inside a row" */}
+<<<<<<< HEAD
             <div className="hide-on-small-only">
                 {[3, 6, 9, 12].map((end) => 
                     <CardList   mob={false} searchList={search_list} indx={[end-3, end]} 
@@ -116,6 +117,30 @@ function YoutubeSearch() {
                                 setVideoID={setVideoID} key={end}/>)}
             </div>
             {search_list !== null ? 
+=======
+            {search_list && !search_list.length ? 
+                <center>
+                    <div style={{fontSize: "21px", paddingTop: "21px"}}>No Videos Found</div>
+                </center> :
+                [ 
+                    console.log(search_list),
+                <div className="hide-on-small-only">
+                    {[3, 6, 9, 12].map((end) => 
+                        <CardList   mob={false} searchList={search_list} indx={[end-3, end]} 
+                                    setVideoID={setVideoID} key={end}/> )}
+                </div>,
+
+                /* For mobile -  */
+                <div className="hide-on-med-and-up">
+                    {[2, 4, 6, 8, 10, 12].map((end) => 
+                        <CardList   mob={true} searchList={search_list} indx={[end-2, end]} 
+                                    setVideoID={setVideoID} key={end}/>)}
+                </div>
+                ]
+            }
+
+            {search_list !== null && search_list.length  ? 
+>>>>>>> 42436937d8eadc9dd1f90c0d50b7932843ad13fa
                 <div className="row">
                   <div className="col s4 m5 l5"></div>
                   <div className="col s2 m1 l1">
@@ -449,4 +474,8 @@ export default YoutubeSearch
 //       "publishTime": "2019-01-13T14:27:37Z"
 //     }
 //   }
+<<<<<<< HEAD
 // ]
+=======
+// ]
+>>>>>>> 42436937d8eadc9dd1f90c0d50b7932843ad13fa
