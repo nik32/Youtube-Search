@@ -1,9 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import M from "materialize-css";
->>>>>>> 42436937d8eadc9dd1f90c0d50b7932843ad13fa
 
 import flintzy from '../misc/Flintzy.png';
 

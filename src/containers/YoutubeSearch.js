@@ -458,8 +458,4 @@ export default YoutubeSearch
 //       "publishTime": "2019-01-13T14:27:37Z"
 //     }
 //   }
-<<<<<<< HEAD
 // ]
-=======
-// ]
->>>>>>> 42436937d8eadc9dd1f90c0d50b7932843ad13fa
