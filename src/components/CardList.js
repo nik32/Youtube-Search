@@ -21,7 +21,7 @@ function CardList(props) {
             title[i % cards] = props.searchList[i].snippet.title;
             desc[i % cards] =   <div>
                                     <a  href={`https://www.youtube.com/channel/${props.searchList[i].snippet.channelId}`}
-                                        target="_blank">
+                                        target="_blank" rel="noreferrer">
                                         [Channel]
                                     </a> 
                                     <p>{props.searchList[i].snippet.description}</p>

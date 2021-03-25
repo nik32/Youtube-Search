@@ -45,7 +45,9 @@ const Navbar = (props) => {
                         <div className="brand-logo left" >
                             <Link to="/">Flintzy</Link>
                         </div>
-                        <a href="#" data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
+                        <a data-target="mobile-demo" style={{cursor:"pointer"}} className="sidenav-trigger right">
+                            <i className="material-icons">menu</i>
+                        </a>
                         <ul className="right hide-on-med-and-down">
                             {
                                 routes.map((route, indx) => (

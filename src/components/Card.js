@@ -22,7 +22,7 @@ function Card(props) {
         <div className="col s6 m4 l4">
             <div className="card" style={{height: "225px"}}>
                 <div className="card-image " style={{width: "100%", height: "65%", overflow: "hidden"}}>
-                    <img    src={props.img} style={cursor_style} alt="card image"
+                    <img    src={props.img} style={cursor_style} alt={props.caption || props.title}
                             onClick={setVideoHandler}/>
                     <span   className="card-title" 
                             style={{fontWeight:"normal"}}>
@@ -36,11 +36,11 @@ function Card(props) {
                             {props.title}
                     </p>
                     {props.channel ? <a href={`https://www.youtube.com/channel/${props.channel}`} 
-                                        target="_blank">
+                                        target="_blank" el="noreferrer">
                                         [Channel]
                                      </a> : null}
                     {props.playlist ? <a href={`https://www.youtube.com/playlist?list=${props.playlist}`} 
-                                         target="_blank">
+                                         target="_blank" el="noreferrer">
                                         [Playlist]
                                        </a> : null}
                 </div>

@@ -90,8 +90,8 @@ function Dummy() {
             </div>
             <div className="row" style={{position: "fixed", bottom: "0", right: "0", left: "0", margin:"1px 0px", width: "100%"}}>
                 <ul className="tabs z-depth-3" ref={tabs_mob}>
-                    <li className="tab col s6" key="t1"><a href="#" className="active">Tab 1</a></li>
-                    <li className="tab col s6" key="t2"><a href="#">Tab 2</a></li>
+                    <li className="tab col s6" key="t1"><a className="active">Tab 1</a></li>
+                    <li className="tab col s6" key="t2"><a>Tab 2</a></li>
                 </ul>
             </div>
         </div>]
