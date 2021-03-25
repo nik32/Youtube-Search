@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import M from 'materialize-css';
 
@@ -9,42 +9,42 @@ import API_KEY from '../misc/keys.js';
 import "../App.css";
 
 function YoutubeSearch() {
-    
+
     const [next_page_token, setNextPageToken] = useState();
     const [prev_page_token, setPrevPageToken] = useState();
     const [search_list, setSearchList] = useState(null);
     const [cur_search_term, setCurSearchTerm] = useState(null);//This is to prevent from situation when a user may type something in the search_bar but may not press submit. In this case - if he presses next/prev button then we would have seen the search result of value currently in search bar (if we search based on value currently in search bar). But result will be wrong coz user never pressed enter to search for the term.
-    
+
     const [search_bar_val, setSearchBarVal] = useState("");
     const [video_id, setVideoID] = useState(null);
 
-    function callYoutubeAPI(url, params){
-        axios.get(url, {params})
-        .then((res) => {
-            // console.log(res.data);
-            setSearchList(res.data.items);    
-            setNextPageToken(res.data.nextPageToken);
-            setPrevPageToken(res.data.prevPageToken);
-            loader(false);
-        })
-        .catch((err) => {
-            M.toast({html: err.response.data.error.message, classes: "#c62828 red darken-3"});
-            console.log(err);
-            loader(false);
-        });        
+    function callYoutubeAPI(url, params) {
+        axios.get(url, { params })
+            .then((res) => {
+                // console.log(res.data);
+                setSearchList(res.data.items);
+                setNextPageToken(res.data.nextPageToken);
+                setPrevPageToken(res.data.prevPageToken);
+                loader(false);
+            })
+            .catch((err) => {
+                M.toast({ html: err.response.data.error.message, classes: "#c62828 red darken-3" });
+                console.log(err);
+                loader(false);
+            });
     }
 
     const loader = (show) => {
         const progress_bar = document.getElementsByClassName("progress")[0];
-        if(progress_bar)
+        if (progress_bar)
             progress_bar.style.display = show ? 'block' : 'none';//Note - Just toggle the display of the loader. Don't Rmove it from DOM. It will cause error when you will fetch pages 2 onwards as react won't call render() again. It will just update the state 
     }
 
-    function changePage(dir){
+    function changePage(dir) {
         loader(true);
         callYoutubeAPI(`https://www.googleapis.com/youtube/v3/search`, {
             key: API_KEY,
-            part: "snippet", 
+            part: "snippet",
             q: cur_search_term,
             pageToken: dir === "FORWARD" ? next_page_token : prev_page_token,
             maxResults: 12,
@@ -53,97 +53,97 @@ function YoutubeSearch() {
     }
 
     function searchYoutube() {
-        if(!navigator.onLine)
-          return M.toast({html: "Connect To Internet For Searching Videos", classes: "#c62828 red darken-3"});
+        if (!navigator.onLine)
+            return M.toast({ html: "Connect To Internet For Searching Videos", classes: "#c62828 red darken-3" });
 
-        if(search_bar_val !== "" && search_bar_val !== null && search_bar_val !== undefined){
+        if (search_bar_val !== "" && search_bar_val !== null && search_bar_val !== undefined) {
             loader(true);
             setCurSearchTerm(search_bar_val);
             callYoutubeAPI(`https://www.googleapis.com/youtube/v3/search`, {
                 key: API_KEY,
-                part: "snippet", 
+                part: "snippet",
                 q: search_bar_val,
                 maxResults: 12,
             });
         }
         else
-            M.toast({html: "Please Enter Search Query!", classes: "#c62828 red darken-3"});
+            M.toast({ html: "Please Enter Search Query!", classes: "#c62828 red darken-3" });
     }
 
     return (
         <div className="container change-card-shadow">
-            <div className="row" id="video" style={{marginTop: "70px", marginBottom: "56px"}}>
+            <div className="row" id="video" style={{ marginTop: "70px", marginBottom: "56px" }}>
                 {video_id ?
-                    <iframe className="col s12" height = "401px" allowFullScreen
-                            src={`https://www.youtube.com/embed/${video_id}`}
-                            frameBorder='0' allow='autoplay; encrypted-media'/> 
-                    :   search_list ?   <center><h4>Tap Thumbnail To Play The Video</h4></center> 
-                                        : <center><h4>Search & Play Youtube Videos Instantly</h4></center> 
+                    <iframe className="col s12" height="401px" title="video"
+                        allowFullScreen src={`https://www.youtube.com/embed/${video_id}`}
+                        frameBorder='0' allow='autoplay; encrypted-media' />
+                    : search_list ? <center><h4>Tap Thumbnail To Play The Video</h4></center>
+                        : <center><h4>Search & Play Youtube Videos Instantly</h4></center>
                 }
             </div>
-            
-            <div className="progress" style={{display: "none", marginBottom: "51px"}}>
+
+            <div className="progress" style={{ display: "none", marginBottom: "51px" }}>
                 <div className="indeterminate"></div>
             </div>
 
             <div className="row">
-                <div className="input-field col s11 " style={{margin: "0 0", paddingRight: "0"}}>
-                    <input  id="search" type="text" value={search_bar_val} 
-                            onChange={(e) => setSearchBarVal(e.target.value)}
-                            onKeyDown={(e) =>   {   if(e.key === 'Enter')  
-                                                        searchYoutube();
-                                                }}/>
+                <div className="input-field col s11 " style={{ margin: "0 0", paddingRight: "0" }}>
+                    <input id="search" type="text" value={search_bar_val}
+                        onChange={(e) => setSearchBarVal(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter')
+                                searchYoutube();
+                        }} />
                     <label htmlFor="search">Search</label>
                 </div>
-                <a  className="waves-effect waves-grey flat-btn col s1" id="search-btn"
-                    style={{paddingTop: "15px"}}
+                <a className="waves-effect waves-grey flat-btn col s1" id="search-btn"
+                    style={{ paddingTop: "15px" }}
                     onClick={searchYoutube}>
-                        <i className="material-icons center">search</i>
+                    <i className="material-icons center">search</i>
                 </a>
             </div>
 
             {/* No need for row as the CardList returns a list "inside a row" */}
-            {search_list && !search_list.length ? 
+            {search_list && !search_list.length ?
                 <center>
-                    <div style={{fontSize: "21px", paddingTop: "21px"}}>No Videos Found</div>
+                    <div style={{ fontSize: "21px", paddingTop: "21px" }}>No Videos Found</div>
                 </center> :
-                [ 
-                    console.log(search_list),
-                <div className="hide-on-small-only">
-                    {[3, 6, 9, 12].map((end) => 
-                        <CardList   mob={false} searchList={search_list} indx={[end-3, end]} 
-                                    setVideoID={setVideoID} key={end}/> )}
-                </div>,
+                [
+                    <div className="hide-on-small-only" key="desktop">
+                        {[3, 6, 9, 12].map((end) =>
+                            <CardList mob={false} searchList={search_list} indx={[end - 3, end]}
+                                setVideoID={setVideoID} key={end} />)}
+                    </div>,
 
-                /* For mobile -  */
-                <div className="hide-on-med-and-up">
-                    {[2, 4, 6, 8, 10, 12].map((end) => 
-                        <CardList   mob={true} searchList={search_list} indx={[end-2, end]} 
-                                    setVideoID={setVideoID} key={end}/>)}
-                </div>
+                    /* For mobile -  */
+                    <div className="hide-on-med-and-up" key="mob">
+                        {[2, 4, 6, 8, 10, 12].map((end) =>
+                            <CardList mob={true} searchList={search_list} indx={[end - 2, end]}
+                                setVideoID={setVideoID} key={end} />)}
+                    </div>
                 ]
             }
 
-            {search_list !== null && search_list.length  ? 
+            {search_list !== null && search_list.length ?
                 <div className="row">
-                  <div className="col s4 m5 l5"></div>
-                  <div className="col s2 m1 l1">
-                      <a  className={"btn-floating red btn-medium waves-effect waves-light" 
-                                    + (prev_page_token === undefined ? " disabled" : "")}
-                          onClick={() => changePage("BACKWARD")}
-                          href="#search">
-                              <i className="material-icons">chevron_left</i>
-                      </a>
-                  </div>
-                  <div className="col s2 m1 l1">
-                      <a  className={"btn-floating red btn-medium waves-effect waves-light" 
-                                    + (next_page_token === undefined ? " disabled" : "")}
-                          onClick={() => changePage("FORWARD")}
-                          href="#search">
-                              <i className="material-icons">chevron_right</i>
-                      </a>
-                  </div> 
-                </div>  :   null}
+                    <div className="col s4 m5 l5"></div>
+                    <div className="col s2 m1 l1">
+                        <a className={"btn-floating red btn-medium waves-effect waves-light"
+                            + (prev_page_token === undefined ? " disabled" : "")}
+                            onClick={() => changePage("BACKWARD")}
+                            href="#search">
+                            <i className="material-icons">chevron_left</i>
+                        </a>
+                    </div>
+                    <div className="col s2 m1 l1">
+                        <a className={"btn-floating red btn-medium waves-effect waves-light"
+                            + (next_page_token === undefined ? " disabled" : "")}
+                            onClick={() => changePage("FORWARD")}
+                            href="#search">
+                            <i className="material-icons">chevron_right</i>
+                        </a>
+                    </div>
+                </div> : null}
         </div>
     );
 }

@@ -25,10 +25,12 @@ function Signin(props) {
                 <center><i className="material-icons medium">account_circle</i></center>
                 <center><h4 style={{margin: "5% 0"}}>Signin</h4></center>
                 <div className="input-field">
-                    <input type="text" placeholder="Username" className="validate"/>
+                    <input type="text" className="validate" id="u_name"/>
+                    <label htmlFor="u_name">Username</label>
                 </div>
                 <div className="input-field">
-                    <input type="password" placeholder="Password" className="validate"/>
+                    <input type="password" className="validate" id="password"/>
+                    <label htmlFor="password">Password</label>
                 </div>
                 <center>
                     <button className="btn waves-effect waves-light" onClick={setData} name="action" 
@@ -41,7 +43,7 @@ function Signin(props) {
             <div className="col s12 m8 l6" style={{padding: "0px 0px"}}>
                 <div className="card">
                     <div className="card-image">
-                        <img src={flintzy} />
+                        <img src={flintzy} alt="flintzy.com logo"/>
                     </div>
                 </div>
             </div>

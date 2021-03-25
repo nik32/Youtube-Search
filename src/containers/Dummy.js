@@ -44,10 +44,12 @@ function Dummy() {
                 </div>
                 
                 <div className="input-field col s2">
-                    <select className="browser-default z-depth-1" ref={select} style={{fontFamily:"Quicksand"}}>
+                    <select className="browser-default z-depth-1" ref={select} id="dummy-select"
+                            style={{fontFamily:"Quicksand"}}>
                         <option value="1" style={{fontFamily:"Quicksand"}}>Youtube</option>
                         <option value="2" style={{fontFamily:"Quicksand"}}>Twitter</option>
                     </select>
+                    <label htmlFor="dummy-select" />
                 </div>
 
             </div>
@@ -59,9 +61,9 @@ function Dummy() {
                 
                 <div className="col s10">
                     <div className="carousel carousel-slider" ref={carousel}>
-                        <a className="carousel-item" href="#"><CardList mob={false}/></a>
-                        <a className="carousel-item" href="#"><CardList mob={false}/></a>
-                        <a className="carousel-item" href="#"><CardList mob={false}/></a>
+                        <a className="carousel-item"><CardList mob={false}/></a>
+                        <a className="carousel-item"><CardList mob={false}/></a>
+                        <a className="carousel-item"><CardList mob={false}/></a>
                     </div>
                 </div>
                 
@@ -81,9 +83,9 @@ function Dummy() {
             </div>
             <div className="row">
                 <div className="carousel carousel-slider" ref={carousel_mob}>
-                    <a className="carousel-item" href="#"><CardList mob={true}/></a>
-                    <a className="carousel-item" href="#"><CardList mob={true}/></a>
-                    <a className="carousel-item" href="#"><CardList mob={true}/></a>
+                    <a className="carousel-item"><CardList mob={true}/></a>
+                    <a className="carousel-item"><CardList mob={true}/></a>
+                    <a className="carousel-item"><CardList mob={true}/></a>
                 </div>
             </div>
             <div className="row" style={{position: "fixed", bottom: "0", right: "0", left: "0", margin:"1px 0px", width: "100%"}}>
@@ -97,7 +99,7 @@ function Dummy() {
 }
 
 window.onresize = (e) =>    {   
-    if(document.location.pathname == "/dummy")
+    if(document.location.pathname === "/dummy")
         document.location.reload();//because carasoul needs reload on resolution change to display properly
 }
 

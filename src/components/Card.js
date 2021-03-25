@@ -22,7 +22,8 @@ function Card(props) {
         <div className="col s6 m4 l4">
             <div className="card" style={{height: "225px"}}>
                 <div className="card-image " style={{width: "100%", height: "65%", overflow: "hidden"}}>
-                    <img    src={props.img} style={cursor_style} onClick={setVideoHandler}/>
+                    <img    src={props.img} style={cursor_style} alt="card image"
+                            onClick={setVideoHandler}/>
                     <span   className="card-title" 
                             style={{fontWeight:"normal"}}>
                                 {props.caption}
