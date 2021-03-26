@@ -59,8 +59,8 @@ function Dummy() {
             </div>
             <div className="row">
                 <div className="col s1" style={{marginTop:"15%"}}>
-                    <a  href="#click" className="btn-floating btn-medium waves-effect waves-light red link-button" 
-                        onClick={previous}>
+                    <a  href="#click" onClick={previous} /*Added this href as there was a warning that <a> must have href other than "#". If not, then <a> convert to button but can't do it becuase materialize needs <a> here or else looking of button will become bad.*/
+                        className="btn-floating btn-medium waves-effect waves-light red link-button">
                         <i className="material-icons">chevron_left</i>
                     </a>
                 </div>
