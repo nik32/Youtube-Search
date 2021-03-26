@@ -45,7 +45,8 @@ const Navbar = (props) => {
                         <div className="brand-logo left" >
                             <Link to="/">Flintzy</Link>
                         </div>
-                        <a data-target="mobile-demo" style={{cursor:"pointer"}} className="sidenav-trigger right">
+                        <a  href="#click" data-target="mobile-demo" 
+                            style={{cursor:"pointer"}} className="sidenav-trigger right">
                             <i className="material-icons">menu</i>
                         </a>
                         <ul className="right hide-on-med-and-down">

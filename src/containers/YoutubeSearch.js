@@ -96,9 +96,8 @@ function YoutubeSearch() {
                         }} />
                     <label htmlFor="search">Search</label>
                 </div>
-                <a className="waves-effect waves-grey flat-btn col s1" id="search-btn"
-                    style={{ paddingTop: "15px" }}
-                    onClick={searchYoutube}>
+                <a  href="#click" className="waves-effect waves-grey flat-btn col s1"
+                    id="search-btn" style={{ paddingTop: "15px" }} onClick={searchYoutube}>
                     <i className="material-icons center">search</i>
                 </a>
             </div>

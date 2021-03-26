@@ -38,8 +38,12 @@ function Dummy() {
 
                 <div className="col s10" style={{marginTop:"11px"}}>
                     <ul className="tabs z-depth-1" ref={tabs}>
-                        <li className="tab col s6" key="t1"><a href="#" className="active">Tab 1</a></li>
-                        <li className="tab col s6" key="t2"><a href="#">Tab 2</a></li>
+                        <li className="tab col s6" key="t1">
+                            <a href="#click" className="active">Tab 1</a>
+                        </li>
+                        <li className="tab col s6" key="t2">
+                            <a href="#click">Tab 2</a>
+                        </li>
                     </ul>
                 </div>
                 
@@ -54,21 +58,25 @@ function Dummy() {
 
             </div>
             <div className="row">
-
                 <div className="col s1" style={{marginTop:"15%"}}>
-                    <a className="btn-floating btn-medium waves-effect waves-light red" onClick={previous}><i className="material-icons">chevron_left</i></a>
+                    <a  href="#click" className="btn-floating btn-medium waves-effect waves-light red link-button" 
+                        onClick={previous}>
+                        <i className="material-icons">chevron_left</i>
+                    </a>
                 </div>
                 
                 <div className="col s10">
                     <div className="carousel carousel-slider" ref={carousel}>
-                        <a className="carousel-item"><CardList mob={false}/></a>
-                        <a className="carousel-item"><CardList mob={false}/></a>
-                        <a className="carousel-item"><CardList mob={false}/></a>
+                        <a href="#click" className="carousel-item"><CardList mob={false}/></a>
+                        <a href="#click" className="carousel-item"><CardList mob={false}/></a>
+                        <a href="#click" className="carousel-item"><CardList mob={false}/></a>
                     </div>
                 </div>
                 
                 <div className="col s1" style={{marginTop:"15%"}}>
-                    <a className="btn-floating btn-medium waves-effect waves-light red" onClick={next}><i className="material-icons">chevron_right</i></a>
+                    <a href="#click" className="btn-floating btn-medium waves-effect waves-light red" onClick={next}>
+                        <i className="material-icons">chevron_right</i>
+                    </a>
                 </div>
             
             </div>
@@ -77,21 +85,25 @@ function Dummy() {
         <div className="container hide-on-med-and-up" key="c2">
             {/* Code for mobiles */}
             <div className="row" style={{marginLeft:"10.5px",marginRight:"10.5px"}}>
-                <a className="waves-effect waves-light btn red col s5">Youtube</a>
+                <a href="#click" className="waves-effect waves-light btn red col s5">Youtube</a>
                 <div className="col s2"></div>
-                <a className="waves-effect waves-light btn red col s5">Twitter</a>
+                <a href="#click" className="waves-effect waves-light btn red col s5">Twitter</a>
             </div>
             <div className="row">
                 <div className="carousel carousel-slider" ref={carousel_mob}>
-                    <a className="carousel-item"><CardList mob={true}/></a>
-                    <a className="carousel-item"><CardList mob={true}/></a>
-                    <a className="carousel-item"><CardList mob={true}/></a>
+                    <a href="#click" className="carousel-item"><CardList mob={true}/></a>
+                    <a href="#click" className="carousel-item"><CardList mob={true}/></a>
+                    <a href="#click" className="carousel-item"><CardList mob={true}/></a>
                 </div>
             </div>
             <div className="row" style={{position: "fixed", bottom: "0", right: "0", left: "0", margin:"1px 0px", width: "100%"}}>
                 <ul className="tabs z-depth-3" ref={tabs_mob}>
-                    <li className="tab col s6" key="t1"><a className="active">Tab 1</a></li>
-                    <li className="tab col s6" key="t2"><a>Tab 2</a></li>
+                    <li className="tab col s6" key="t1">
+                        <a href="#click" className="active">Tab 1</a>
+                    </li>
+                    <li className="tab col s6" key="t2">
+                        <a href="#click">Tab 2</a>
+                    </li>
                 </ul>
             </div>
         </div>]

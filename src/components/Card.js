@@ -36,11 +36,11 @@ function Card(props) {
                             {props.title}
                     </p>
                     {props.channel ? <a href={`https://www.youtube.com/channel/${props.channel}`} 
-                                        target="_blank" el="noreferrer">
+                                        target="_blank" rel="noreferrer">
                                         [Channel]
                                      </a> : null}
                     {props.playlist ? <a href={`https://www.youtube.com/playlist?list=${props.playlist}`} 
-                                         target="_blank" el="noreferrer">
+                                         target="_blank" rel="noreferrer">
                                         [Playlist]
                                        </a> : null}
                 </div>
